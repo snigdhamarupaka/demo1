@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './UserForm.css';
+import API_URL from '../config';
 
 const UserForm = ({ onUserAdded }) => {
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ const UserForm = ({ onUserAdded }) => {
       setApiError('');
       
       try {
-        const response = await fetch('http://localhost:5000/api/users', {
+        const response = await fetch(`${API_URL}/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

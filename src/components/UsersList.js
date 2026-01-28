@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import './UsersList.css';
+import API_URL from '../config';
 
 const UsersList = forwardRef((props, ref) => {
   const [users, setUsers] = useState([]);
@@ -11,7 +12,7 @@ const UsersList = forwardRef((props, ref) => {
     setError('');
     
     try {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch(`${API_URL}/users`);
       const data = await response.json();
 
       if (response.ok) {
@@ -42,7 +43,7 @@ const UsersList = forwardRef((props, ref) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const response = await fetch(`${API_URL}/users/${id}`, {
         method: 'DELETE',
       });
 
